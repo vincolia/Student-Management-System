@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+	body {background-color: #f3f4f6;}
+</style>
+</head>
+
+<body>
+	
+<nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-900 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+  <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+    <div class="container-fluid ">
+      <a class="text-xl text-black font-semibold text-gray-300 hover:text-gray-100 focus:text-gray-100 mr-4" 
+      	href="/admin/student/home">Student Management</a>
+      <a class="text-xl text-black font-semibold text-gray-300 hover:text-gray-100 focus:text-gray-100 mr-4"  
+      	href="/admin/subjects">Subject Management</a>
+    </div>
+  </div>
+</nav>
+
+	<div class="md:flex md:justify-center mb-6 py-10">
+
+		<div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
+
+			<h2
+				class="font-medium leading-tight text-4xl mt-0 mb-2 text-gray-900 md:flex md:justify-center mb-6 py-3"
+				th:if="${subject.id == null}">Add Subject Form</h2>
+			<h2
+				class="font-medium leading-tight text-4xl mt-0 mb-2 text-gray-900 md:flex md:justify-center mb-6 py-3"
+				th:unless="${subject.id == null}">Edit Subject Form</h2>
+
+			<form th:action="@{/admin/subjects/save}" th:object="${subject}"
+				method="POST">
+				<div class="grid grid-cols-2 gap-4">
+
+					<input type="hidden" th:field="*{id}" />
+
+					<div class="form-group mb-6">
+						<label for="exampleTel0" class="form-label inline-block mb-2 text-gray-700">
+							Subject Code</label> 
+							<input type="text"
+								class="form-control        
+							          block
+							          w-full
+							          px-3
+							          py-1.5
+							          text-base
+							          font-normal
+							          text-gray-700
+							          bg-white bg-clip-padding
+							          border border-solid border-gray-300
+							          rounded
+							          transition
+							          ease-in-out
+							          m-0
+							          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+							id="exampleInput123" aria-describedby="emailHelp123"
+							placeholder="Subject Code" th:field="*{code}" required>
+					</div>
+					<div class="form-group mb-6">
+
+						<label for="exampleTel0" class="form-label inline-block mb-2 text-gray-700">
+							No. of Units</label> 
+							<input type="number"
+								class="form-control
+							          block
+							          w-full
+							          px-3
+							          py-1.5
+							          text-base
+							          font-normal
+							          text-gray-700
+							          bg-white bg-clip-padding
+							          border border-solid border-gray-300
+							          rounded
+							          transition
+							          ease-in-out
+							          m-0
+							          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+							id="exampleNumber0" aria-describedby="emailHelp124"
+							placeholder="No. Of Units" th:field="*{units}" 
+							min = "2" max ="4"
+							required>
+					</div>
+				</div>
+
+
+				<div class="form-group mb-6">
+
+					<label for="exampleTel0"
+						class="form-label inline-block mb-2 text-gray-700">Subject Name</label>
+					<input type="text"
+						class="form-control
+					          block
+					          w-full
+					          px-3
+					          py-1.5
+					          text-base
+					          font-normal
+					          text-gray-700
+					          bg-white bg-clip-padding
+					          border border-solid border-gray-300
+					          rounded
+					          transition
+					          ease-in-out
+					          m-0
+					          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+						id="exampleInput124" aria-describedby="emailHelp124"
+						placeholder="Subject Name" th:field="*{name}">
+				</div>
+
+				<button type="submit"
+					class="
+				      w-full
+				      px-6
+				      py-2.5
+				      bg-blue-600
+				      text-white
+				      font-medium
+				      text-xs
+				      leading-tight
+				      uppercase
+				      rounded
+				      shadow-md
+				      hover:bg-blue-700 hover:shadow-lg
+				      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+				      active:bg-blue-800 active:shadow-lg
+				      transition
+				      duration-150
+				      ease-in-out">Submit</button>
+			</form>
+		</div>
+	</div>
+	
+</body>
+</html>

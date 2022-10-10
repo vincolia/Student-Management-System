@@ -1,0 +1,309 @@
+<!doctype html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+  
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+	body {background-color: #f3f4f6;}
+</style>
+</head>
+
+<body>
+	
+<nav class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-900 text-gray-500 hover:text-gray-700 focus:text-gray-700 shadow-lg">
+  <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
+    <div class="container-fluid ">
+      <a class="text-xl text-black font-semibold text-gray-300 hover:text-gray-100 focus:text-gray-100 mr-4" 
+      	href="/admin/student/home">Student Management</a>
+      <a class="text-xl text-black font-semibold text-gray-300 hover:text-gray-100 focus:text-gray-100 mr-4"  
+      	href="/admin/subjects">Subject Management</a>
+    </div>
+  </div>
+</nav>
+
+	<div class="md:flex md:justify-center mb-6 py-10">
+
+		<div class="block p-6 rounded-lg shadow-lg bg-white max-w-md">
+
+			<h2
+				class="font-medium leading-tight text-4xl mt-0 mb-2 text-gray-900 md:flex md:justify-center mb-6 py-3"
+				th:if="${student.id == null}">Add Student Form</h2>
+			<h2
+				class="font-medium leading-tight text-4xl mt-0 mb-2 text-gray-900 md:flex md:justify-center mb-6 py-3"
+				th:unless="${student.id == null}">Edit Student Form</h2>
+
+			<form th:action="@{/new/student/save}" th:object="${student}"
+				method="POST">
+				<div class="grid grid-cols-2 gap-4">
+
+					<input type="hidden" th:field="*{id}" />
+
+					<div class="form-group mb-6">
+						<label for="exampleTel0" class="form-label inline-block mb-2 text-gray-700">
+							First Name</label> 
+							<input type="text"
+								class="form-control        
+							          block
+							          w-full
+							          px-3
+							          py-1.5
+							          text-base
+							          font-normal
+							          text-gray-700
+							          bg-white bg-clip-padding
+							          border border-solid border-gray-300
+							          rounded
+							          transition
+							          ease-in-out
+							          m-0
+							          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+							id="exampleInput123" aria-describedby="emailHelp123"
+							placeholder="First name" th:field="*{firstName}" required>
+					</div>
+					<div class="form-group mb-6">
+
+						<label for="exampleTel0" class="form-label inline-block mb-2 text-gray-700">
+							Last Name</label> 
+							<input type="text"
+								class="form-control
+							          block
+							          w-full
+							          px-3
+							          py-1.5
+							          text-base
+							          font-normal
+							          text-gray-700
+							          bg-white bg-clip-padding
+							          border border-solid border-gray-300
+							          rounded
+							          transition
+							          ease-in-out
+							          m-0
+							          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+							id="exampleInput124" aria-describedby="emailHelp124"
+							placeholder="Last name" th:field="*{lastName}" required>
+					</div>
+				</div>
+
+
+				<div class="form-group mb-6">
+
+					<label for="exampleTel0"
+						class="form-label inline-block mb-2 text-gray-700">Address</label>
+					<input type="text"
+						class="form-control
+					          block
+					          w-full
+					          px-3
+					          py-1.5
+					          text-base
+					          font-normal
+					          text-gray-700
+					          bg-white bg-clip-padding
+					          border border-solid border-gray-300
+					          rounded
+					          transition
+					          ease-in-out
+					          m-0
+					          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+						id="exampleInput124" aria-describedby="emailHelp124"
+						placeholder="address" th:field="*{address}">
+				</div>
+
+
+				<div class="form-group mb-6">
+					<label for="exampleTel0"
+						class="form-label inline-block mb-2 text-gray-700">Email</label>
+					<input type="email"
+						class="form-control block
+						        w-full
+						        px-3
+						        py-1.5
+						        text-base
+						        font-normal
+						        text-gray-700
+						        bg-white bg-clip-padding
+						        border border-solid border-gray-300
+						        rounded
+						        transition
+						        ease-in-out
+						        m-0
+						        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+						id="exampleInput125" placeholder="Email address"
+						th:field="*{email}" required>
+				</div>
+
+				<div class="form-group">
+					<label> Birthday </label> <input type="date" name="date"
+						th:field="*{dob}" class="form-control" placeholder="Pick Birthday"
+						required />
+				</div>
+
+				<div class="grid grid-cols-2 gap-4">
+
+					<div class="form-group mb-6">
+						<label for="exampleTel0"
+							class="form-label inline-block mb-2 text-gray-700">Gender</label>
+						<select
+							class="form-select appearance-none
+						          block
+						          w-full
+						          px-3
+						          py-1.5
+						          text-base
+						          font-normal
+						          text-gray-700
+						          bg-white bg-clip-padding
+						          border border-solid border-gray-300
+						          rounded
+						          transition
+						          ease-in-out
+						          m-0
+							      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+							aria-label="Default select example"
+							th:field="*{gender}">
+							<option th:value="'Male'" th:text="Male"></option>
+							<option th:value="'Female'" th:text="Female"></option>
+						</select>
+					</div>
+
+					<div class="flex justify-center">
+						<div class="mb-3 xl:w-96">
+							<label for="exampleTel0"
+								class="form-label inline-block mb-2 text-gray-700">Mobile
+								Number</label> <input type="tel"
+								class="
+								        form-control
+								        block
+								        w-full
+								        px-3
+								        py-1.5
+								        text-base
+								        font-normal
+								        text-gray-700
+								        bg-white bg-clip-padding
+								        border border-solid border-gray-300
+								        rounded
+								        transition
+								        ease-in-out
+								        m-0
+								        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+								id="exampleTel0" placeholder="Mobile Number"
+								th:field="*{contactNumber}" />
+						</div>
+					</div>
+				</div>
+
+				<div class="grid grid-cols-2 gap-4">
+
+					<div class="flex justify-center">
+						<div class="mb-3 xl:w-96">
+							<label for="exampleTel0"
+								class="form-label inline-block mb-2 text-gray-700">
+								Year Level</label> <select
+								class="form-select appearance-none
+								      block
+								      w-full
+								      px-3
+								      py-1.5
+								      text-base
+								      font-normal
+								      text-gray-700
+								      bg-white bg-clip-padding bg-no-repeat
+								      border border-solid border-gray-300
+								      rounded
+								      transition
+								      ease-in-out
+								      m-0
+								      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+								aria-label="Default select example" th:field="*{gradeLevel}"
+								required>
+								<option th:value="'1st Year'" th:text="1st-Year"></option>
+								<option th:value="'2nd Year'" th:text="2nd-Year"></option>
+								<option th:value="'3rd Year'" th:text="3rd-Year"></option>
+								<option th:value="'4th Year'" th:text="4th-Year"></option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group mb-6">
+						<label for="exampleTel0"
+							class="form-label inline-block mb-2 text-gray-700">Course</label>
+						<input type="text"
+							class="form-control        
+						          block
+						          w-full
+						          px-3
+						          py-1.5
+						          text-base
+						          font-normal
+						          text-gray-700
+						          bg-white bg-clip-padding
+						          border border-solid border-gray-300
+						          rounded
+						          transition
+						          ease-in-out
+						          m-0
+						          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+							id="exampleInput123" aria-describedby="emailHelp123"
+							placeholder="course" th:field="*{course}" required>
+					</div>
+				</div>
+
+				<div class="form-group mb-6">
+					<label for="exampleTel0"
+						class="form-label inline-block mb-2 text-gray-700">Course
+						Title</label> <input type="text"
+						class="form-control        
+					          block
+					          w-full
+					          px-3
+					          py-1.5
+					          text-base
+					          font-normal
+					          text-gray-700
+					          bg-white bg-clip-padding
+					          border border-solid border-gray-300
+					          rounded
+					          transition
+					          ease-in-out
+					          m-0
+					          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+						id="exampleInput123" aria-describedby="emailHelp123"
+						placeholder="Course Title" th:field="*{courseTitle}" required>
+				</div>
+	
+				<button type="submit"
+					class="
+				      w-full
+				      px-6
+				      py-2.5
+				      bg-blue-600
+				      text-white
+				      font-medium
+				      text-xs
+				      leading-tight
+				      uppercase
+				      rounded
+				      shadow-md
+				      hover:bg-blue-700 hover:shadow-lg
+				      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+				      active:bg-blue-800 active:shadow-lg
+				      transition
+				      duration-150
+				      ease-in-out">Submit</button>
+			</form>
+		</div>
+	</div>
+	
+</body>
+</html>
