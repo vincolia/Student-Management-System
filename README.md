@@ -1,7 +1,7 @@
 # Student-Management-System
 A simple Spring Framework web application based on Spring Data Jpa, Thymeleaf and Spring MVC
 
-# What's Inside
+## What's Inside
 * Maven
 * Spring Core
 * Spring Data (Jpa, Hibernate & MySql)
@@ -13,14 +13,14 @@ A simple Spring Framework web application based on Spring Data Jpa, Thymeleaf an
 ![Capture2](https://user-images.githubusercontent.com/112062787/194828828-e754a21d-a598-4c49-a0a4-296321a27a8a.PNG)
 
 
-# Installation 
+## Installation 
 Copy then paste on command line to clone the project
 
 `git clone https://github.com/vincolia/Student-Management-System.git`
 
 The project is build on Maven, Pick your IDE then Import Maven > Existing Maven Project 
 
-# Database Configuration
+## Database Configuration
 Download and Install [Xampp](https://www.apachefriends.org/download.html) Open and then start `Apache and MySQL`.
 
 Go to http://localhost/phpmyadmin/ or on your MySQL Workbench
@@ -36,5 +36,5 @@ spring.datasource.password=
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-# How to Run
+## How to Run
 Run the project on your IDE then go to http://localhost:8080/admin/student/home
