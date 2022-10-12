@@ -8,7 +8,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Subject extends BaseEntity{
@@ -25,6 +27,10 @@ public class Subject extends BaseEntity{
 	
 	@ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "subjects", fetch = FetchType.LAZY)
 	private Set<Student> studentEnrolled = new HashSet<>();
+	
+	@ManyToOne
+	@JoinColumn(name = "teacher_id", referencedColumnName = "id")
+	private Teacher teacher;
 	
 	public Subject() {
 
@@ -67,6 +73,18 @@ public class Subject extends BaseEntity{
 
 	public void setStudentEnrolled(Set<Student> studentEnrolled) {
 		this.studentEnrolled = studentEnrolled;
+	}
+
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+	
+	public String getTeacherName() {
+		return teacher.getFirstName();
 	}
 	
 	

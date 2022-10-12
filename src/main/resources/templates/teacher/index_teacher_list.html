@@ -32,32 +32,35 @@
 
 
 <div class="flex flex-col px-28 py-8">
-	<h2 class="font-medium leading-tight text-4xl mt-0 mb-2 text-gray-900">List of Subjects</h2>
+	<h2 class="font-medium leading-tight text-4xl mt-0 mb-2 text-gray-900">List of Teachers</h2>
 	
   <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
       <div class="overflow-hidden">
-      <a th:href = "@{/admin/subject/new}"
+      <a th:href = "@{/admin/teacher/new}"
 		      class="inline-block px-6 py-2.5 bg-green-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-green-600 hover:shadow-lg 
 		      focus:bg-green-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-green-700 active:shadow-lg transition duration-150 ease-in-out">
-		      Create Subject</a>
+		      Create Teacher</a>
         <table class="min-w-full">
           <thead class="bg-white border-b">
             <tr>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Subject Id
+                Teacher Id
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Subject Code
+                First Name
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Name
+                Last Name
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Units
+                Gender
               </th>
 			  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Teacher
+                Department
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Contact Number
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                 Actions
@@ -68,38 +71,37 @@
           	
           	
             <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100"
-            	th:each = "subject : ${subjects}" >
+            	th:each = "teacher : ${teachers}" >
             
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"		
-              		th:text = "${subject.id}"></td>
+              		th:text = "${teacher.id}"></td>
               
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"		
-              		th:text = "${subject.code}"></td>
+              		th:text = "${teacher.firstName}"></td>
               		
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"		
-              		th:text = "${subject.name}"></td>
+              		th:text = "${teacher.lastName}"></td>
 
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-              		th:text = "${subject.units}"></td>
+              		th:text = "${teacher.gender}"></td>
               		
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
-              		th:text = "${subject.teacher?.getFullName()}"></td>
+              		th:text = "${teacher.Department}"></td>
+              		
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
+              		th:text = "${teacher.contactNumber}"></td>
               		
               <td>              
-              	<a th:href = "@{/subjects/edit/{id}(id=${subject.id})}" 
+              	<a th:href = "@{/admin/teacher/edit/{id}(id=${teacher.id})}" 
               				class = "inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg 
               				focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out">
               				edit</a>
-              	<a th:href = "@{/subjects/edit/assign/{id}(id=${subject.id})}" 
-              				class = "inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg 
-              				focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out">
-              				Assign</a>
-              	<!-- 
-              	<a th:href = "@{/subject/delete/{id}(id=${subject.id})}" 
+            
+              	<a th:href = "@{/admin/teacher/delete/{id}(id=${teacher.id})}" 
               				class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg 
               				focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">
               				delete</a>
-              		 -->
+              	
               </td>
             </tr>
           </tbody>

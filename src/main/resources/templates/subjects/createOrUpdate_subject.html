@@ -21,6 +21,8 @@
       	href="/admin/student/home">Student Management</a>
       <a class="text-xl text-black font-semibold text-gray-300 hover:text-gray-100 focus:text-gray-100 mr-4"  
       	href="/admin/subjects">Subject Management</a>
+      <a class="text-xl text-black font-semibold text-gray-300 hover:text-gray-100 focus:text-gray-100 mr-4"  
+      	href="/admin/teacher">Teacher Management</a>
     </div>
   </div>
 </nav>
@@ -115,6 +117,8 @@
 						id="exampleInput124" aria-describedby="emailHelp124"
 						placeholder="Subject Name" th:field="*{name}">
 				</div>
+				
+				<input type="hidden" th:field="*{teacher}" />
 
 				<button type="submit"
 					class="

@@ -19,12 +19,6 @@ public class StudentController {
 	
 	@Autowired
 	private SubjectRepository subjectRepository;
-
-	public StudentController(StudentRepository studentRepository, SubjectRepository subjectRepository) {
-		super();
-		this.studentRepository = studentRepository;
-		this.subjectRepository = subjectRepository;
-	}
 	
 	@GetMapping("/admin/student/home")
 	public String showAllStudent(Model model) {
@@ -48,9 +42,8 @@ public class StudentController {
 	}
 	
 	@GetMapping("/student/edit/{id}")
-	public String showEditStudentForm(@PathVariable("id") int id, Model model) {
-		
-		//studentRepository.findById(id).ifPresent(edit -> model.addAttribute("student", edit));
+	public String showEditStudentForm(@PathVariable("id") int id,
+								 Model model) {
 		
 		model.addAttribute("student", studentRepository.findById(id).get());
 		
@@ -58,7 +51,8 @@ public class StudentController {
 	}
 	
 	@GetMapping("/student/profile/{id}")
-	public String showStudentProfile(@PathVariable("id") int id, Model model) {
+	public String showStudentProfile(@PathVariable("id") int id,
+								 Model model) {
 		
 		model.addAttribute("student", studentRepository.findById(id).get());
 		
@@ -66,7 +60,8 @@ public class StudentController {
 	}
 	
 	@GetMapping("/student/profile/add/{id}")
-	public String showAddSubjectToStudent(@PathVariable("id") int id, Model model) {
+	public String showAddSubjectToStudent(@PathVariable("id") int id,
+								Model model) {
 		
 		model.addAttribute("student", studentRepository.findById(id).get());
 		

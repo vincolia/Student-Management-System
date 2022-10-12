@@ -38,13 +38,13 @@
 
 			<h2
 				class="font-medium leading-tight text-4xl mt-0 mb-2 text-gray-900 md:flex md:justify-center mb-6 py-3"
-				th:if="${student.id == null}">Add Student Form</h2>
+				th:if="${teacher.id == null}">Add Teacher Form</h2>
 			<h2
 				class="font-medium leading-tight text-4xl mt-0 mb-2 text-gray-900 md:flex md:justify-center mb-6 py-3"
-				th:unless="${student.id == null}">Edit Student Form</h2>
+				th:unless="${teacher.id == null}">Edit Teacher Form</h2>
 
-			<form th:action="@{/new/student/save}" th:object="${student}"
-				method="POST">
+			<form th:action="@{/admin/teacher/save}" th:object="${teacher}"
+					method="POST">
 				<div class="grid grid-cols-2 gap-4">
 
 					<input type="hidden" th:field="*{id}" />
@@ -204,44 +204,12 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="grid grid-cols-2 gap-4">
-
-					<div class="flex justify-center">
-						<div class="mb-3 xl:w-96">
-							<label for="exampleTel0"
-								class="form-label inline-block mb-2 text-gray-700">
-								Year Level</label> <select
-								class="form-select appearance-none
-								      block
-								      w-full
-								      px-3
-								      py-1.5
-								      text-base
-								      font-normal
-								      text-gray-700
-								      bg-white bg-clip-padding bg-no-repeat
-								      border border-solid border-gray-300
-								      rounded
-								      transition
-								      ease-in-out
-								      m-0
-								      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-								aria-label="Default select example" th:field="*{gradeLevel}"
-								required>
-								<option th:value="'1st Year'" th:text="1st-Year"></option>
-								<option th:value="'2nd Year'" th:text="2nd-Year"></option>
-								<option th:value="'3rd Year'" th:text="3rd-Year"></option>
-								<option th:value="'4th Year'" th:text="4th-Year"></option>
-							</select>
-						</div>
-					</div>
-
-					<div class="form-group mb-6">
+				
+				<div class="form-group mb-6">
 						<label for="exampleTel0"
-							class="form-label inline-block mb-2 text-gray-700">Course</label>
-						<input type="text"
-							class="form-control        
+							class="form-label inline-block mb-2 text-gray-700">Department</label>
+						<select
+							class="form-select appearance-none
 						          block
 						          w-full
 						          px-3
@@ -255,35 +223,16 @@
 						          transition
 						          ease-in-out
 						          m-0
-						          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-							id="exampleInput123" aria-describedby="emailHelp123"
-							placeholder="course" th:field="*{course}" required>
+							      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+							aria-label="Default select example"
+							th:field="*{department}">
+							<option th:value="'College of Computer Studies'" th:text="Computer-Studies"></option>
+							<option th:value="'College of Engineering'" th:text="Engineering"></option>
+							<option th:value="'College of Business'" th:text="Business"></option>
+							<option th:value="'College of Fine Arts'" th:text="Fine-Arts"></option>
+						</select>
 					</div>
-				</div>
 
-				<div class="form-group mb-6">
-					<label for="exampleTel0"
-						class="form-label inline-block mb-2 text-gray-700">Course
-						Title</label> <input type="text"
-						class="form-control        
-					          block
-					          w-full
-					          px-3
-					          py-1.5
-					          text-base
-					          font-normal
-					          text-gray-700
-					          bg-white bg-clip-padding
-					          border border-solid border-gray-300
-					          rounded
-					          transition
-					          ease-in-out
-					          m-0
-					          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-						id="exampleInput123" aria-describedby="emailHelp123"
-						placeholder="Course Title" th:field="*{courseTitle}" required>
-				</div>
-	
 				<button type="submit"
 					class="
 				      w-full

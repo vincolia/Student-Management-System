@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.web.sms.model.Subject;
 import com.web.sms.repository.SubjectRepository;
+import com.web.sms.repository.TeacherRepository;
 
 @Controller
 public class SubjectController {
 	
 	@Autowired
 	private SubjectRepository subjectRepository;
+	
+	@Autowired
+	private TeacherRepository teacherRepository;
 	
 	@GetMapping("/admin/subjects")
 	public String showAllSubjects(Model model) {
@@ -45,6 +49,16 @@ public class SubjectController {
 		model.addAttribute("subject", subjectRepository.findById(id).get());
 		
 		return "subjects/createOrUpdate_Subject";
+	}
+	
+	@GetMapping("/subjects/edit/assign/{id}")
+	public String assignTeacherToSubject(@PathVariable("id") int id, 
+									Model model) {
+		
+		model.addAttribute("subject", subjectRepository.findById(id).get());
+		model.addAttribute("teachers", teacherRepository.findAll());
+		
+		return "subjects/assign_teacher_subject";
 	}
 	
 	/*
